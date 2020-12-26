@@ -107,7 +107,7 @@ p{
 #hero h1:nth-child(3) span{
   animation-delay: 3s;
 }
-#hero .cta{
+.cta{
   display: inline-block;
   padding: 10px 30px;
   color: firebrick;
@@ -120,14 +120,14 @@ p{
   transition: .3s ease;
   transition-property: background-color, color;
 }
-#hero .cta:hover{
+.cta:hover{
   color: azure;
   background-color: firebrick;
 }
 /* end of hero section */
 
 /* service section */
-#services{}
+
 #services .service{
   flex-direction: column;
   text-align: center;
@@ -167,7 +167,7 @@ p{
   top: 0;
   height: 100%;
   width: 100%;
-  background-color:darkslategrey;
+  background-image: linear-gradient(60deg, #29323c 0%, #485863 100%);
   opacity: 0.6;
   z-index: -1;
 }
@@ -200,6 +200,7 @@ p{
 }
 #projects .project-header h1{
   margin-bottom: 50px;
+
 }
 #projects .all-projects{
   display: flex;
@@ -220,17 +221,79 @@ p{
 #projects .project-info{
   padding: 30px;
   flex-basis: 50%;
-  background-color: rgb(54, 67, 90);
   height: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  background-image: linear-gradient(60deg, #29323c 0%, #485863 100%);
+  color: azure;
+}
+#projects .project-info h1{
+  font-size: 4rem;
+  font-weight: 500;
+}
+#projects .project-info h2{
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 10px;
+}
+#projects .project-info p{
+  color: azure;
+}
+#projects .project-img{
+  flex-basis: 50%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+#projects .project-img::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(60deg, #29323c 0%, #485863 100%);
+  opacity: 0.5;
+}
+#project .project-img img{
+  transition: .3s ease transform;
+}
+#projects .project-item:hover .project-img img{
+  transform: scale(1.1);
 }
 
-
-
 /* end projects section */
+
+/* about section */
+#about .about{
+  flex-direction: column-reverse;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+}
+#about .col-left{
+  width: 250px;
+  height: 360px;
+}
+#about .col-right{
+  width: 100%;
+}
+#about .col-right h2{
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: .2rem;
+  margin-bottom: 10px;
+}
+#about .col-right p{
+  margin-bottom: 20px;
+}
+#about .col-right a{
+  margin-bottom: 20px;
+}
+/* end of about section */
 
 
 /* keyframes */
