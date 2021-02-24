@@ -8,6 +8,7 @@
 html{
   font-size: 10px;
   font-family: 'Montserrat', sans-serif ;
+  scroll-behavior: smooth;
 }
 a{
   text-decoration: none;
@@ -52,6 +53,135 @@ p{
 .brand h1 span{
   color: firebrick;
 }
+/* header section */
+#header{
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: auto;
+}
+#header .header{
+  min-height: 8vh;
+  background-color: rgba(31, 30, 30, 0.24);
+  transition: .3s ease background-color;
+}
+#header .navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  max-width: 1300px;
+  padding: 0 10px;
+}
+ #header .nav-list ul{
+  list-style: none;
+  position: absolute;
+  background-color: rgba(31, 30,30);
+  height: 100vh;
+  width: 100vh;
+  left: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  overflow-x: hidden;
+  transition: .5s ease left;
+}
+#header .nav-list ul.active{
+  left: 0;
+}
+#header .nav-list ul a{
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: .2rem;
+  text-decoration: none;
+  color: azure;
+  text-transform: uppercase;
+  display: block;
+  padding: 20px;
+}
+#header .nav-list ul a::after{
+  content: attr(data-after);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  color: rgba(251, 248, 255,0.015);
+  font-size: 10rem;
+  letter-spacing: 50px;
+  z-index: -1;
+  transition: .3s ease letter-spacing;
+}
+#header .nav-list ul li:hover a::after{
+  transform: translate(-50%, -50%) scale(1);
+  letter-spacing: initial;
+}
+#header .nav-list ul li:hover a{
+  color: firebrick;
+}
+#header .hamburger{
+  height: 60px;
+  width: 60px;
+  display: inline-block;
+  border: 3px solid azure;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: pointer;
+  transform: scale(.8);
+  margin-right: 20px;
+}
+#header .hamburger::after{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  content: '';
+  border: 3px solid azure;
+  animation: hamburger_puls 3s ease infinite;
+}
+
+#header .hamburger .bar{
+  height: 2px;
+  width: 30px;
+  position: relative;
+  background-color: azure;
+  z-index: -1;
+}
+#header .hamburger .bar::after,
+#header .hamburger .bar::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  background-color: azure;
+  transition: .3s ease;
+  transition-property: top, bottom;
+} 
+#header .hamburger .bar::after{
+  top: 8px;
+}
+#header .hamburger .bar::before{
+  bottom: 8px;
+}
+#header .hamburger.active .bar::before{
+
+  bottom: 0;
+}
+#header .hamburger.active .bar::after{
+  top: 0;
+}
+/* header section */
+
 /* hero section */
 #hero{
   background-image: url(/images/carlos-muza-hpjSkU2UYSU-unsplash\ \(copy\).jpg);
@@ -145,7 +275,10 @@ p{
   padding: 100px 0;
 }
 
-
+#services .service-top{
+  width: 500px;
+  margin: 0 auto;
+}
 
 #services .service-bottom{
   display: flex;
@@ -178,7 +311,7 @@ p{
   height: 100%;
   width: 100%;
   background-image: linear-gradient(70deg,#609b9b,#485863 100% );
-  opacity: 0.6;
+  opacity: 0.9;
   z-index: -1;
 }
 #services .service-bottom .icon{
@@ -432,6 +565,16 @@ box-shadow: 0px 0px 5px 0px rgb(26, 27, 27);
     font-weight: 500px;
   }
 }
+@keyframes hamburger_puls{
+  0%{
+    opacity:1;
+    transform: scale(1);
+  }
+  100%{
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
 
 /* end of keyframes */
 
@@ -511,12 +654,13 @@ box-shadow: 0px 0px 5px 0px rgb(26, 27, 27);
 #contact .contact-items{
   width: 100%;
   display: flex;
+  justify-content: space-evenly;
   flex-direction: row;
-  padding: 20px;
   margin: 0;
 }
 #contact .contact-item{
-  margin: 20px;
+  width: 30%;
+  margin: 0 ;
   flex-direction: row;
 }
 #contact .contact-items .icon{
@@ -534,3 +678,37 @@ box-shadow: 0px 0px 5px 0px rgb(26, 27, 27);
 /* end contact */
 }
 /* end Mediaquery for tablet */
+
+/* Media queries for desktop */
+@media only screen and (min-width:1200px){
+/* header section */
+  #header .hamburger{
+    display: none;
+  }
+  #header .nav-list ul{
+    position: initial;
+    display: block;
+    height: auto;
+    width: fit-content;
+    background-color: transparent;
+  }
+  #header .nav-list ul li{
+    display: inline-block;
+  }
+  #header .nav-list ul a{
+    font-size: 1.8rem;
+  }
+  #header .nav-list ul a::after{
+    display: none;
+  }
+/* end header section */
+
+  /* service section */
+  #services .service-bottom .service-item{
+    flex-basis: 22%;
+    margin:1.5%;
+  }
+  /* end service section*/
+}
+
+/*end Media queries for desktop */
